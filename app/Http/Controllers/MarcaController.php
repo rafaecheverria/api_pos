@@ -12,9 +12,22 @@ class MarcaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Marca::where('estado',1)->get();
+        $buscar = $request->buscar;
+        $marcas = Marca::traerMarcas($buscar);
+
+        return [
+            'pagination' => [
+                'total'        => $marcas->total(),
+                'current_page' => $marcas->currentPage(),
+                'per_page'     => $marcas->perPage(),
+                'last_page'    => $marcas->lastPage(),
+                'from'         => $marcas->firstItem(),
+                'to'           => $marcas->lastItem(),
+            ],
+            'marcas' => $marcas,
+        ];
     }
 
     /**
