@@ -41,7 +41,7 @@ class MarcaController extends Controller
         $Marca = new Marca();
         $Marca->nombre = $request->nombre;
         $Marca->save();
-        return $Marca;
+        //return $request->nombre;
 
     }
 

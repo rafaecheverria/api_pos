@@ -12,9 +12,9 @@ class Marca extends Model
     public static function traerMarcas($buscar){
 
         if($buscar == ''){
-            $marcas = Marca::orderBy('id', 'DESC')->paginate(2);
+            $marcas = Marca::orderBy('id', 'DESC')->paginate(6);
         }else{
-            $marcas = Marca::where('nombre', 'like', '%' . $buscar . '%')->orderBy('id', 'DESC')->paginate(2);
+            $marcas = Marca::where('nombre', 'like', '%' . $buscar . '%')->orderBy('id', 'DESC')->paginate(6);
         }
 
         return $marcas;
