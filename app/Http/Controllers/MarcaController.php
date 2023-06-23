@@ -51,10 +51,16 @@ class MarcaController extends Controller
      * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function show(Marca $marca)
+    public function getMarca($id)
     {
-        return $marca;
+
+        $marca = Marca::findOrFail($id);
+        return response()->json([
+            'marca' => $marca,
+        ]);
     }
+
+    
 
     /**
      * Update the specified resource in storage.
